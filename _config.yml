@@ -28,17 +28,17 @@ baseurl: ""
 
 
 
-title: "RainyAlley"
-email: "dubuyuye@yeah.net"
+title: "Power Yang"
+email: "562660264@qq.com"
 description: "Developer"
-github_username:  "dubuyuye"
+github_username:  "poweryang1990"
 swiftype_searchId: "ncwR9a8S9CTx2q9SgsJm"
-disqus_shortname: "rainyalley"
+disqus_shortname: "poweryang"
 
 
 
-url: "http://blog.rainyalley.com"
-imgrepo: "http://blog.rainyalley.com/static/img"
+url: "https://poweryang1990.github.io"
+imgrepo: "https://poweryang1990.github.io/static/img"
 #url: "http://127.0.0.1:4000"
 #imgrepo: "http://127.0.0.1:4000/static/img"
 
