@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Power Yang Blog!
+title: 首页
 ---
 {% include JB/setup %}
 <ul class="posts">
