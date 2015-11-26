@@ -5,6 +5,6 @@ permalink: /link/
 icon: octicon-link-external
 ---
 
-###[东方星痕](http://www.lxy520.net/)
+###[敏捷个人-周金根](http://www.cnblogs.com/zhoujg/tag/%E6%95%8F%E6%8D%B7%E4%B8%AA%E4%BA%BA/)
 
-###[Cass](http://cassite.net/)
+###[InfoQ](http://www.infoq.com/cn/)
