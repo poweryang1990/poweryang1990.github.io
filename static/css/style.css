@@ -39,7 +39,9 @@ layout: null
 .navbar-tiffany .nav>li>a{
     color: #fff;
 }
-
+.navbar-tiffany .navbar-brand{
+    font-size: 18px;
+}
 
 .navbar-tiffany .nav>li>a:hover,
 .navbar-tiffany .nav>li>a:focus,
