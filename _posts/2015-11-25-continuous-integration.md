@@ -20,3 +20,60 @@ http://www.codeproject.com/Articles/703244/Continuous-Integration-Delivery-For-G
 * [Deploying via Web Deploy](https://johanleino.wordpress.com/2013/04/02/using-teamcity-for-asp-net-development-part-3/)
 * [Backup (pre-deploy)](https://johanleino.wordpress.com/2013/05/24/using-teamcity-for-asp-net-development-part-4/)
 
+### 5、GitLabCI GitLab Runner  
+* 安装Runner  
+    https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
+
+* 配置.gitlab-ci.yml
+    
+<pre><code>
+    variables:
+    Solution: UOKO.SSO.sln
+    before_script:
+    - 'echo off'
+    stages:
+    - nugetrestore
+    - build
+    nugetrestore:
+    stage: nugetrestore
+    script:
+        - 'cd .nuget'
+        - 'echo restoring..'
+        - 'nuget restore "../%Solution%"'
+        - 'cd ..'
+        - 'echo restored'
+    only:
+        - master
+    tags:
+        - zhipingrunner
+
+    build:
+    stage: build
+    script:
+        - 'echo building..'
+        - '"%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe" "%Solution%" /t:Build /property:Configuration=Debug /p:VisualStudioVersion=12.0'
+    only:
+        - master
+    tags:
+        - zhipingrunner
+ </code></pre>
+
+### 6、MSbuild App MSDeploy
+<pre><code>
+
+    #打包 MSBuild="%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"
+
+    MSBuild "F:\UOKOWorkspace\Git\uoko.sso\UOKO.SSO.Server\UOKO.SSO.Server.csproj" /T:Package /property:Configuration=Release /P:VisualStudioVersion=12.0 
+    /P:PackageLocation="F:\发布\pakagezip\uokossodeploy.zip"
+
+    #创建站点 appcmd="%SystemRoot%\C:\Windows\System32\inetsrv\appcmd.exe"
+    appcmd add site /name:"ids.uoko.ioc"  /bindings:http://ids.uoko.ioc:80 /physicalPath:"F:\发布\ids.uoko.ioc"
+    appcmd add appplool /name:ids.uoko.ioc
+    appcmd set app ids.uoko.ioc/ -applicationPool:ids.uoko.ioc
+
+    #本地部署
+    F:\发布\pakagezip\uokossodeploy.deploy.cmd "-setParam:name='IIS Web Application Name',value=ids.uoko.ioc" /y
+
+    #远程部署
+    F:\发布\pakagezip>uokossodeploy.deploy.cmd /Y /U:simple-deploy /P:deploy /A:Basic "/M:https://WIN-DEVTEST-002:8172/msdeploy.axd?site=ids.uoko.ioc" -allowUntrusted "-setParam:name='IIS Web Application Name',value='ids.uoko.ioc'"
+ </code></pre>
