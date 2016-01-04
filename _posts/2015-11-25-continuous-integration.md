@@ -58,7 +58,7 @@ http://www.codeproject.com/Articles/703244/Continuous-Integration-Delivery-For-G
         - zhipingrunner
  </code></pre>
 
-### 6、MSbuild App MSDeploy
+### 6、MSbuild AppCmd MSDeploy
 <pre><code>
 
     #打包 MSBuild="%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"
