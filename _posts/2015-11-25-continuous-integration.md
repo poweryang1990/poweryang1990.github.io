@@ -77,3 +77,6 @@ http://www.codeproject.com/Articles/703244/Continuous-Integration-Delivery-For-G
     #远程部署
     F:\发布\pakagezip>uokossodeploy.deploy.cmd /Y /U:simple-deploy /P:deploy /A:Basic "/M:https://WIN-DEVTEST-002:8172/msdeploy.axd?site=ids.uoko.ioc" -allowUntrusted "-setParam:name='IIS Web Application Name',value='ids.uoko.ioc'"
  </code></pre>
+ 
+ 
+ http://stackoverflow.com/questions/6511380/how-do-i-build-a-solution-programatically-in-c
