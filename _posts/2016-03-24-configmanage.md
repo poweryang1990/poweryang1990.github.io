@@ -90,7 +90,7 @@ zookeeper胜于etcd两点：
 （2）配套工具：etcd没有web监控平台，client有node-etcd 3.0，较年轻。zookeeper有简单易用的exhibitor监控，java client的curator替代zkclient，非常成熟易用，避免掉坑，还支持.Net client。
 
 ### 总结
- 继续目标和成熟性  个人倾向于选取ZooKeeper来封装开发
+ 基于目标和成熟性  个人倾向于选取ZooKeeper来封装开发
 ***
 # ZooKeeper详细分析
 
