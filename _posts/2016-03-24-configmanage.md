@@ -1,8 +1,8 @@
 ---
 layout: post
-title:GoLang 学习之路
-tags: zookkeeper java 分布式
-categories: Java
+title:配置中心
+tags: zookkeeper Consul go java 分布式
+categories: 架构
 ---
 # 开源分布式配置中心选型
 ## 一、目标
@@ -76,21 +76,45 @@ http://www.infoq.com/cn/articles/etcd-interpretation-application-scenario-implem
 
 ####2.4.4 源码
 https://github.com/coreos/etcd
+###2.5 Consul
+Consul是HashiCorp公司推出的开源工具，用于实现分布式系统的服务发现与配置。与其他分布式服务注册与发现的方案，Consul的方案更"一站式"，内置了服务注册与发现框 架、分布一致性协议实现、健康检查、Key/Value存储、多数据中心方案，不再需要依赖其他工具（比如ZooKeeper等）。使用起来也较 为简单。Consul用Golang实现，因此具有天然可移植性(支持Linux、windows和Mac OS X)；安装包仅包含一个可执行文件，方便部署，与Docker等轻量级容器可无缝配合。 
 
-###2.6 比较etcd和zookeeper
+####2.5.1 Consul 的使用场景
+
+docker 实例的注册与配置共享
+coreos 实例的注册与配置共享
+vitess 集群
+SaaS 应用的配置共享
+与 confd 服务集成，动态生成 nginx 和 haproxy 配置文件
+
+####2.5.2 Consul 的优势
+
+使用 Raft 算法来保证一致性, 比复杂的 Paxos 算法更直接. 相比较而言, zookeeper 采用的是 Paxos, 而 etcd 使用的则是 Raft.
+支持多数据中心，内外网的服务采用不同的端口进行监听。 多数据中心集群可以避免单数据中心的单点故障,而其部署则需要考虑网络延迟, 分片等情况等. zookeeper 和 etcd 均不提供多数据中心功能的支持.
+支持健康检查. etcd 不提供此功能.
+支持 http 和 dns 协议接口. zookeeper 的集成较为复杂, etcd 只支持 http 协议.
+官方提供web管理界面, etcd 无此功能.
+综合比较, Consul 作为服务注册和配置管理的新星, 比较值得关注和研究.
+
+####2.5.3 Consul 的角色
+
+client: 客户端, 无状态, 将 HTTP 和 DNS 接口请求转发给局域网内的服务端集群. 
+server: 服务端, 保存配置信息, 高可用集群, 在局域网内与本地客户端通讯, 通过广域网与其他数据中心通讯. 每个数据中心的 server 数量推荐为 3 个或是 5 个.  
+
+###2.6 比较etcd、zookeeper、consul
 Jason Wilder的一篇博客分别对常见的服务发现开源项目Zookeeper、Doozer、etcd进行了总结。
-http://jasonwilder.com/blog/2014/02/04/service-discovery-in-the-cloud/
+http://jasonwilder.com/blog/2014/02/04/service-discovery-in-the-cloud/  
 
-etcd特性略胜于zookeeper两点：  
-（1）etcd在订阅发布机制上能提供的功能与zookeeper相似。但是更轻量级，使用api更简单，依赖少，可直接使用curl/http+json或etcdctl的方式。  
-（2）etcd的TTL机制能避免一定的网络分区问题（如网络间断误认为注册服务下线）  
+服务发现：Zookeeper vs etcd vs Consul
+http://dockone.io/article/667   
 
-zookeeper胜于etcd两点：  
-（1）成熟，稳定性高，多数坑已被踩过。  
-（2）配套工具：etcd没有web监控平台，client有node-etcd 3.0，较年轻。zookeeper有简单易用的exhibitor监控，java client的curator替代zkclient，非常成熟易用，避免掉坑，还支持.Net client。
+Consul和ZooKeeper的区别
+http://dockone.io/article/300  
 
+Consul vs. ZooKeeper, doozerd, etcd（译文） 
+https://www.douban.com/note/496362733/
 ### 总结
- 基于目标和成熟性  个人倾向于选取ZooKeeper来封装开发
+ 
 ***
-# ZooKeeper详细分析
+# 
 
