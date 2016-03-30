@@ -4,7 +4,9 @@ title:配置中心
 tags: zookkeeper Consul go java 分布式
 categories: 架构
 ---
-# 开源分布式配置中心选型
+
+# 开源分布式配置中心选型  
+
 ## 一、目标
 实现分布式配置中心：  
 （1）集中管理外部依赖的服务配置和服务内部配置  
