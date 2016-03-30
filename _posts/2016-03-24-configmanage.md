@@ -1,6 +1,6 @@
 ---
 layout: post
-title:配置中心
+title: 配置中心
 tags: zookkeeper Consul go java 分布式
 categories: 架构
 ---
