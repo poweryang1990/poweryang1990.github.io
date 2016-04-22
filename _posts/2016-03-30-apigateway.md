@@ -36,15 +36,17 @@ https://github.com/hashicorp/consul/issues/1012
 http://www.mammatustech.com/Microservice-Service-Discovery-with-Consul
 http://www.mammatustech.com/consul-service-discovery-and-health-for-microservices-architecture-tutorial
 
-### consul mysql  data Persisten
+### consul  data Persisten
  
-http://txt.fliglio.com/2015/07/12-factor-infrastructure-with-consul-and-vault/  
+用 -data-dir 指定 数据持久化目录
 
 ### consul Multi environment config  
  We have multiple data centers, and we also have environments like DEV, TEST, QA, PROD  
  https://groups.google.com/forum/#!topic/consul-tool/R61ISkfAzwo  
  https://github.com/hashicorp/consul-template/issues/374   
  https://groups.google.com/forum/#!topic/consul-tool/0P_27-j3SYQ
+ 
+ 我们也可以用 Tags来区分多环境
  
 ### 用Consul实现服务注册和发现  
 http://blog.leanote.com/post/proyang/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0
@@ -56,3 +58,11 @@ http://blog.leanote.com/post/proyang/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%
  Consul提供了两种发现服务的方式，一种是通过HTTP API查看存在哪些服务；另外一种是通过consul agent内置的DNS服务来做。
  两者的差别在于后者可以根据服务check的实时状态动态调整available服务节点列表。我们这里也着重说明适用 DNS方式进行服务发现的具体步骤
  consul为服务编排的内置域名为 “NAME.service.consul"
+ 
+ ### How to use Consul-template?
+ 
+ https://github.com/hashicorp/consul-template/tree/master
+ 
+ 
+ ## consul load balancer 
+ DNS NGINX
