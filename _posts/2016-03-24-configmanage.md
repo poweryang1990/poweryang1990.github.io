@@ -118,5 +118,12 @@ https://www.douban.com/note/496362733/
 ### 总结
  
 ***
-# 
+# Consul K/V  
+
+本次采用Consul的K/V 实现了 配置中心 详细见开源项目  
+
+ https://github.com/uoko-J-Go/UOKOConsul 
+ 
+##   配置 跨数据中心 复制  
+https://github.com/hashicorp/consul-replicate
 

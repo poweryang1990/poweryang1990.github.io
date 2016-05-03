@@ -65,4 +65,7 @@ http://blog.leanote.com/post/proyang/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%
  
  
  ## consul load balancer 
- DNS NGINX
+ DNS NGINX  
+ ## service Discovery -Prepared Query
+ 
+ https://www.consul.io/docs/agent/http/query.html
